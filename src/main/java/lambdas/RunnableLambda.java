@@ -1,4 +1,4 @@
-package lambda;
+package lambdas;
 
 public class RunnableLambda {
     public static void main(String[] args) {
