@@ -12,9 +12,7 @@ public class PredicateAndConsumerExample {
     static Predicate<Student> p1 = student -> student.getGradeLevel() >= 3;
     static Predicate<Student> p2 = student -> student.getGpa() >= 3.9;
     static BiConsumer<String, List<String>> biConsumer
-            = (name, activities) -> {
-        System.out.println(name + " : " + activities);
-    };
+            = (name, activities) -> System.out.println(name + " : " + activities);
 
     static Consumer<Student> studentConsumer = student -> {
         if (p1.and(p2).test(student)) {
@@ -23,7 +21,7 @@ public class PredicateAndConsumerExample {
     };
 
     public void printNameAndActivities(List<Student> students) {
-       students.forEach(studentConsumer);
+        students.forEach(studentConsumer);
     }
 
     public static void main(String[] args) {
