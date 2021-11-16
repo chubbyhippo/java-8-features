@@ -14,3 +14,4 @@ public class BinaryOperatorExample {
         System.out.println("Result of minBy is : " + minBy.apply(4, 5));
     }
 }
+
