@@ -12,6 +12,7 @@ public class StreamsFlatMapExample {
                 .map(Student::getActivities)
                 .flatMap(List::stream)
                 .distinct()
+                .sorted()
                 .toList();
     }
 
