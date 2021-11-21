@@ -1,5 +1,8 @@
 package streams;
 
+import data.Student;
+import data.StudentDataBase;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -25,6 +28,13 @@ public class StreamsReduceExample {
         return integers.stream().reduce((integer, integer2) -> integer * integer2);
     }
 
+    public static Optional<Student> getHighestGpaStudent() {
+        return StudentDataBase
+                .getAllStudents()
+                .stream()
+                .reduce((student, student2) -> student.getGpa() > student2.getGpa() ? student : student2);
+    }
+
     public static void main(String[] args) {
         List<Integer> integers = Arrays.asList(1, 3, 5, 7);
 
@@ -39,6 +49,10 @@ public class StreamsReduceExample {
         System.out.println(emptyResult.isPresent());
         if (emptyResult.isPresent()) {
             System.out.println(emptyResult.get());
+        }
+
+        if (getHighestGpaStudent().isPresent()) {
+            System.out.println(getHighestGpaStudent());
         }
     }
 }
