@@ -17,8 +17,16 @@ public class StreamsMatchExample {
                 .anyMatch(student -> student.getGpa() >= 4);
     }
 
+    public static boolean noneMatch() {
+        return StudentDataBase
+                .getAllStudents()
+                .stream()
+                .noneMatch(student -> student.getGpa() >= 4.1);
+    }
+
     public static void main(String[] args) {
         System.out.println("allMatch : " + allMatch());
         System.out.println("anyMatch : " + anyMatch());
+        System.out.println("noneMatch : " + noneMatch());
     }
 }
