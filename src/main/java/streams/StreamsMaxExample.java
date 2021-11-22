@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-public class StreamsMinMaxExample {
+public class StreamsMaxExample {
     public static int findMaxValue(List<Integer> integers) {
         return integers
                 .stream()
