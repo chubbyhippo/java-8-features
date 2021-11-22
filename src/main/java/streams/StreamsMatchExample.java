@@ -9,7 +9,16 @@ public class StreamsMatchExample {
                 .stream()
                 .allMatch(student -> student.getGpa() >= 3.9);
     }
+
+    public static boolean anyMatch() {
+        return StudentDataBase
+                .getAllStudents()
+                .stream()
+                .anyMatch(student -> student.getGpa() >= 4);
+    }
+
     public static void main(String[] args) {
         System.out.println("allMatch : " + allMatch());
+        System.out.println("anyMatch : " + anyMatch());
     }
 }
