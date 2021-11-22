@@ -8,7 +8,7 @@ public class StreamsMaxExample {
     public static int findMaxValue(List<Integer> integers) {
         return integers
                 .stream()
-                .reduce(0, (integer, integer2) -> integer > integer2 ? integer : integer2);
+                .reduce(Integer.MIN_VALUE, (integer, integer2) -> integer > integer2 ? integer : integer2);
     }
 
     public static Optional<Integer> findMaxValueOptional(List<Integer> integers) {
