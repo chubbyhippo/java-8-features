@@ -23,8 +23,20 @@ public class StreamsGroupingByExample {
         System.out.println(studentMap);
     }
 
+    public static void twoLevelGroupingByGradeLevelAndGpa() {
+        Map<Integer, Map<String, List<Student>>> studentMap = StudentDataBase.getAllStudents()
+                .stream()
+                .collect(Collectors.groupingBy(Student::getGradeLevel,
+                        Collectors.groupingBy(student -> student.getGpa() >= 3.8 ? "OUTSTANDING" : "AVERAGE")));
+        System.out.println(studentMap);
+    }
+
     public static void main(String[] args) {
+        System.out.println("groupStudentsByGender");
         groupStudentsByGender();
+        System.out.println("customizedGroupingBy");
         customizedGroupingBy();
+        System.out.println("twoLevelGrouping");
+        twoLevelGroupingByGradeLevelAndGpa();
     }
 }
