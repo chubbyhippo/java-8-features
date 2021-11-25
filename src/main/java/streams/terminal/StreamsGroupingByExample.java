@@ -3,6 +3,7 @@ package streams.terminal;
 import data.Student;
 import data.StudentDataBase;
 
+import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -31,6 +32,14 @@ public class StreamsGroupingByExample {
         System.out.println(studentMap);
     }
 
+    public static void twoLevelGroupingByGradeLevelAndNoteBooks() {
+        Map<Integer, IntSummaryStatistics> studentMap = StudentDataBase.getAllStudents()
+                .stream()
+                .collect(Collectors.groupingBy(Student::getGradeLevel,
+                        Collectors.summarizingInt(Student::getNoteBooks)));
+        System.out.println(studentMap);
+    }
+
     public static void main(String[] args) {
         System.out.println("groupStudentsByGender");
         groupStudentsByGender();
@@ -38,5 +47,7 @@ public class StreamsGroupingByExample {
         customizedGroupingBy();
         System.out.println("twoLevelGrouping");
         twoLevelGroupingByGradeLevelAndGpa();
+        System.out.println("twoLevelGroupingByGradeLevelAndNoteBooks");
+        twoLevelGroupingByGradeLevelAndNoteBooks();
     }
 }
