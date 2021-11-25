@@ -33,9 +33,9 @@ public class StreamsGroupingByExample {
     }
 
     public static void twoLevelGroupingByGradeLevelAndNoteBooks() {
-        Map<Integer, IntSummaryStatistics> studentMap = StudentDataBase.getAllStudents()
+        Map<String, IntSummaryStatistics> studentMap = StudentDataBase.getAllStudents()
                 .stream()
-                .collect(Collectors.groupingBy(Student::getGradeLevel,
+                .collect(Collectors.groupingBy(Student::getName,
                         Collectors.summarizingInt(Student::getNoteBooks)));
         System.out.println(studentMap);
     }
