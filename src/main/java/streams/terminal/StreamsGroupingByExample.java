@@ -4,6 +4,8 @@ import data.Student;
 import data.StudentDataBase;
 
 import java.util.*;
+import java.util.function.BinaryOperator;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class StreamsGroupingByExample {
@@ -45,6 +47,14 @@ public class StreamsGroupingByExample {
         System.out.println(studentLinkedHashMap);
     }
 
+    public static void calculateTopGpa() {
+        Map<Integer, Student> studentMap = StudentDataBase.getAllStudents()
+                .stream()
+                .collect(Collectors.toMap(Student::getGradeLevel, Function.identity(),
+                        BinaryOperator.maxBy(Comparator.comparing(Student::getGpa))));
+        System.out.println(studentMap);
+    }
+
     public static void main(String[] args) {
         System.out.println("groupStudentsByGender");
         groupStudentsByGender();
@@ -56,5 +66,7 @@ public class StreamsGroupingByExample {
         twoLevelGroupingByGradeLevelAndNoteBooks();
         System.out.println("threeArgumentGroupBy");
         threeArgumentGroupBy();
+        System.out.println("calculateTopGpa");
+        calculateTopGpa();
     }
 }
