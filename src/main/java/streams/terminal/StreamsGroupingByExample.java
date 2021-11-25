@@ -16,7 +16,15 @@ public class StreamsGroupingByExample {
         System.out.println(studentMap);
     }
 
+    public static void customizedGroupingBy() {
+        Map<String, List<Student>> studentMap = StudentDataBase.getAllStudents()
+                .stream()
+                .collect(Collectors.groupingBy(student -> student.getGpa() >= 3.8 ? "OUTSTANDING" : "AVERAGE"));
+        System.out.println(studentMap);
+    }
+
     public static void main(String[] args) {
         groupStudentsByGender();
+        customizedGroupingBy();
     }
 }
