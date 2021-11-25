@@ -3,9 +3,7 @@ package streams.terminal;
 import data.Student;
 import data.StudentDataBase;
 
-import java.util.IntSummaryStatistics;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class StreamsGroupingByExample {
@@ -40,6 +38,13 @@ public class StreamsGroupingByExample {
         System.out.println(studentMap);
     }
 
+    public static void threeArgumentGroupBy() {
+        LinkedHashMap<String, Set<Student>> studentLinkedHashMap = StudentDataBase.getAllStudents()
+                .stream()
+                .collect(Collectors.groupingBy(Student::getName, LinkedHashMap::new, Collectors.toSet()));
+        System.out.println(studentLinkedHashMap);
+    }
+
     public static void main(String[] args) {
         System.out.println("groupStudentsByGender");
         groupStudentsByGender();
@@ -49,5 +54,7 @@ public class StreamsGroupingByExample {
         twoLevelGroupingByGradeLevelAndGpa();
         System.out.println("twoLevelGroupingByGradeLevelAndNoteBooks");
         twoLevelGroupingByGradeLevelAndNoteBooks();
+        System.out.println("threeArgumentGroupBy");
+        threeArgumentGroupBy();
     }
 }
