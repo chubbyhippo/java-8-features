@@ -55,6 +55,14 @@ public class StreamsGroupingByExample {
         System.out.println(studentMap);
     }
 
+    public static void calculateLeastGpa() {
+        Map<Integer, Student> studentMap = StudentDataBase.getAllStudents()
+                .stream()
+                .collect(Collectors.toMap(Student::getGradeLevel, Function.identity(),
+                        BinaryOperator.minBy(Comparator.comparing(Student::getGpa))));
+        System.out.println(studentMap);
+    }
+
     public static void main(String[] args) {
         System.out.println("groupStudentsByGender");
         groupStudentsByGender();
@@ -68,5 +76,7 @@ public class StreamsGroupingByExample {
         threeArgumentGroupBy();
         System.out.println("calculateTopGpa");
         calculateTopGpa();
+        System.out.println("calculateLeastGpa");
+        calculateLeastGpa();
     }
 }
