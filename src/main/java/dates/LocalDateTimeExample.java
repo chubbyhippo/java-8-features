@@ -34,5 +34,11 @@ public class LocalDateTimeExample {
         LocalDateTime withMonth = localDateTime.withMonth(12);
         System.out.println("withMonth = " + withMonth);
 
+        LocalDateTime atTime = LocalDate.of(2029, 1, 1).atTime(23, 23);
+        System.out.println("atTime = " + atTime);
+
+        LocalDateTime atDate = LocalTime.of(23, 23).atDate(LocalDate.now());
+        System.out.println("atDate = " + atDate);
+
     }
 }
