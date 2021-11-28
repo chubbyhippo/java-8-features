@@ -25,5 +25,14 @@ public class ZonedDateTimeExample {
 
         LocalDateTime localDateTime = LocalDateTime.ofInstant(Instant.now(), ZoneId.systemDefault());
         System.out.println("localDateTime = " + localDateTime);
+
+        LocalDateTime dateTime = LocalDateTime.now();
+        System.out.println("dateTime = " + dateTime);
+
+        ZonedDateTime zonedDateTime2 = dateTime.atZone(ZoneId.systemDefault());
+        System.out.println("zonedDateTime2 = " + zonedDateTime2);
+
+        OffsetDateTime offsetDateTime = localDateTime.atOffset(ZoneOffset.ofHours(-9));
+        System.out.println("offsetDateTime = " + offsetDateTime);
     }
 }
